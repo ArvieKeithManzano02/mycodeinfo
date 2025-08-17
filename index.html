@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+      color: #333;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 900px;
+      margin: 150px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+      display: flex;
+      gap: 30px;
+    }
+
+    /* Left Side (Image + Name) */
+    .profile-box {
+      flex: 1;
+      text-align: center;
+    }
+
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 5px solid #74ebd5;
+      margin-bottom: 10px;
+    }
+
+    .profile-box h2 {
+      margin: 10px 0 0 0;
+      color: #444;
+    }
+
+    /* Right Side (Details with Carousel) */
+    .details {
+      flex: 2;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+      min-width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      color: #555;
+      margin-top: 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    /* Circle Indicators */
+    .indicators {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .dot.active {
+      background-color: #74ebd5;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Left Side -->
+    <div class="profile-box">
+      <img src="img.jpg" alt="Profile Photo" class="profile-pic">
+      <h2>Arvie Keith Manzano</h2>
+    </div>
+
+    <!-- Right Side (Carousel) -->
+    <div class="details">
+      <div class="carousel" id="carousel">
+        
+        <!-- About Me -->
+        <div class="carousel-item">
+          <h2>About Me</h2>
+          <p>26 years old, born on June 2, 1999.</p>
+          <p>I live in Becques, Tagudin, Ilocos Sur.</p>
+          <p>Currently a 3rd-year college student pursuing a Bachelor of Science in Information Technology at Ilocos Sur Polytechnic State College, Tagudin Campus.</p>
+        </div>
+
+        <!-- Hobbies -->
+        <div class="carousel-item">
+          <h2>Hobbies</h2>
+          <ul>
+            <li>🎮 Playing online games</li>
+            <li>🎸 Playing guitar</li>
+            <li>🤝 Bonding with friends</li>
+          </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="carousel-item">
+          <h2>Contact Information</h2>
+          <p>Tel no: 09563921701</p>
+          <p>Email: <a href="mailto:arviekeithm@gmail.com">arviekeithm@gmail.com</a></p>
+        </div>
+
+      </div>
+
+      <!-- Circle Indicators -->
+      <div class="indicators">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    let currentIndex = 0;
+    const carousel = document.getElementById("carousel");
+    const dots = document.querySelectorAll(".dot");
+    const totalItems = document.querySelectorAll(".carousel-item").length;
+
+    function goToSlide(index) {
+      currentIndex = index;
+      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDots();
+    }
+
+    function updateDots() {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+      });
+    }
+  </script>
+
+</body>
+</html>
