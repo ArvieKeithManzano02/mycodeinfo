@@ -8,62 +8,47 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
-      color: #333;
-    }
-
-    /* Main Container */
-    .container {
-      max-width: 900px;
-      margin: 150px auto;
-      background: #fff;
+      font-size: larger;
+      background: linear-gradient(135deg, #11917a 0%, #7272dd 100%);
+      color: #e7d9d9;
       padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
-      display: flex;
-      gap: 30px;
     }
 
-    /* Left Side (Image + Name) */
+    /* Profile Section */
     .profile-box {
-      flex: 1;
       text-align: center;
+      margin-bottom: 40px;
     }
 
     .profile-pic {
-      width: 180px;
-      height: 180px;
+      width: 300px;
+      height: 300px;
       border-radius: 10px;
       object-fit: cover;
       border: 5px solid #74ebd5;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .profile-box h2 {
-      margin: 10px 0 0 0;
-      color: #444;
+      margin: 0;
+      color: #ffffff;
     }
 
-    /* Right Side (Details with Carousel) */
+    /* Details Section (Full Page Scroll) */
     .details {
-      flex: 2;
-      overflow: hidden;
-      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .carousel {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .carousel-item {
-      min-width: 100%;
-      padding: 10px;
-      box-sizing: border-box;
+    .details section {
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 10px;
     }
 
     h2 {
-      color: #555;
+      color: #ffffff;
       margin-top: 0;
     }
 
@@ -76,101 +61,61 @@
       margin: 8px 0;
     }
 
-    /* Circle Indicators */
-    .indicators {
-      text-align: center;
-      margin-top: 15px;
+    a {
+      color: #74ebd5;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
 
-    .dot {
-      height: 12px;
-      width: 12px;
-      margin: 0 5px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      cursor: pointer;
-      transition: background-color 0.3s;
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      .profile-pic {
+        width: 140px;
+        height: 140px;
+      }
     }
-
-    .dot.active {
-      background-color: #74ebd5;
-    }
-
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- Left Side -->
-    <div class="profile-box">
-      <img src="img.jpg" alt="Profile Photo" class="profile-pic">
-      <h2>Arvie Keith Manzano</h2>
-    </div>
-
-    <!-- Right Side (Carousel) -->
-    <div class="details">
-      <div class="carousel" id="carousel">
-        
-        <!-- About Me -->
-        <div class="carousel-item">
-          <h2>About Me</h2>
-          <p>26 years old, born on June 2, 1999.</p>
-          <p>I live in Becques, Tagudin, Ilocos Sur.</p>
-          <p>Currently a 3rd-year college student pursuing a Bachelor of Science in Information Technology at Ilocos Sur Polytechnic State College, Tagudin Campus.</p>
-        </div>
-
-        <!-- Hobbies -->
-        <div class="carousel-item">
-          <h2>Hobbies</h2>
-          <ul>
-            <li>🎮 Playing online games</li>
-            <li>🎸 Playing guitar</li>
-            <li>🤝 Bonding with friends</li>
-          </ul>
-        </div>
-
-        <!-- Contact Information -->
-        <div class="carousel-item">
-          <h2>Contact Information</h2>
-          <p>Tel no: 09451225875</p>
-          <p>Email: <a href="mailto:arviekeithm@gmail.com">arviekeithm@gmail.com</a></p>
-          <p>Facebook: <a href="https://www.facebook.com/kitzz.manzano">Arvie Keith Manzano</a></p>
-        </div>
-
-      </div>
-
-      <!-- Circle Indicators -->
-      <div class="indicators">
-        <span class="dot active" onclick="goToSlide(0)"></span>
-        <span class="dot" onclick="goToSlide(1)"></span>
-        <span class="dot" onclick="goToSlide(2)"></span>
-      </div>
-    </div>
+  <!-- Profile -->
+  <div class="profile-box">
+    <img src="img.jpg" alt="Profile Photo" class="profile-pic">
+    <h2>Arvie Keith Manzano</h2>
   </div>
 
+  <!-- Details (Scroll Down Naturally) -->
+  <div class="details">
+    
+    <section>
+      <h2>About Me</h2>
+      <p>26 years old, born on June 2, 1999.</p>
+      <p>I live in Becques, Tagudin, Ilocos Sur.</p>
+      <p>Currently a 3rd-year college student pursuing a Bachelor of Science in Information Technology at Ilocos Sur Polytechnic State College, Tagudin Campus.</p>
+    </section>
 
-  <script>
-    let currentIndex = 0;
-    const carousel = document.getElementById("carousel");
-    const dots = document.querySelectorAll(".dot");
-    const totalItems = document.querySelectorAll(".carousel-item").length;
+    <section>
+      <h2>Hobbies</h2>
+      <ul>
+        <li>🎮 Playing online games</li>
+        <li>🎸 Playing guitar</li>
+        <li>🤝 Bonding with friends</li>
+      </ul>
+    </section>
 
-    function goToSlide(index) {
-      currentIndex = index;
-      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-      updateDots();
-    }
+    <section>
+      <h2>Contact Information</h2>
+      <p>Tel no: 09451225875</p>
+      <p>Email: <a href="mailto:arviekeithm@gmail.com">arviekeithm@gmail.com</a></p>
+      <p>Facebook: <a href="https://www.facebook.com/kitzz.manzano">Arvie Keith Manzano</a></p>
+    </section>
 
-    function updateDots() {
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === currentIndex);
-      });
-    }
-  </script>
+  </div>
 
 </body>
 </html>
-
-
-
